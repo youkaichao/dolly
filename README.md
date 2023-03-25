@@ -13,6 +13,7 @@ Download from https://cloud.tsinghua.edu.cn/f/a7d28ef30cad4686a0b9/ into ./parqu
 ```
 pip install transformers
 transformers-cli download EleutherAI/gpt-j-6B --cache-dir ./model/
+export TRANSFORMERS_CACHE=`pwd`/model
 ```
 
 * Add the `dolly` repo to Databricks (under Repos click Add Repo, enter `https://github.com/databrickslabs/dolly.git`, then click Create Repo).
