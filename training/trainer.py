@@ -31,6 +31,8 @@ from transformers import (
 
 logger = logging.getLogger(__name__)
 
+import os
+DEFAULT_TRAINING_DATASET_FILE = 'parquet-train.arrow'
 DEFAULT_TRAINING_DATASET = "tatsu-lab/alpaca"
 DEFAULT_INPUT_MODEL = "EleutherAI/gpt-j-6B"
 RESPONSE_KEY = "### Response:\n"
@@ -77,7 +79,9 @@ def preprocess_batch(batch: Dict[str, List], tokenizer: AutoTokenizer, max_lengt
 
 def load_training_dataset(training_data_id: str = DEFAULT_TRAINING_DATASET, split: str = "train") -> Dataset:
     logger.info(f"Loading {training_data_id} dataset")
-    dataset: Dataset = load_dataset(training_data_id)[split]
+    from datasets import Dataset
+    dataset: Dataset = Dataset.from_file(DEFAULT_TRAINING_DATASET_FILE)
+    # dataset: Dataset = load_dataset(training_data_id)[split]
     logger.info("Found %d rows", dataset.num_rows)
     return dataset
 
