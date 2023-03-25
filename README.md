@@ -6,7 +6,7 @@ This fine-tunes the [GPT-J 6B](https://huggingface.co/EleutherAI/gpt-j-6B) model
 
 ### Download dataset file
 
-Download from https://cloud.tsinghua.edu.cn/f/a7d28ef30cad4686a0b9/ .
+Download from https://cloud.tsinghua.edu.cn/f/a7d28ef30cad4686a0b9/ into ./parquet-train.arrow
 
 ### Download model checkpoint from huggingface
 
