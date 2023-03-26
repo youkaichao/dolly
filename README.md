@@ -4,6 +4,12 @@ This fine-tunes the [GPT-J 6B](https://huggingface.co/EleutherAI/gpt-j-6B) model
 
 ## Get Started Training
 
+### Install dependency
+
+```
+pip install -r requirements_dev.txt
+```
+
 ### Download dataset file and model file
 
 ```
@@ -25,12 +31,6 @@ Alternatively, you can download model checkpoint from huggingface
 pip install transformers
 transformers-cli download EleutherAI/gpt-j-6B --cache-dir ./model/
 export TRANSFORMERS_CACHE=`pwd`/model
-```
-
-### Install dependency
-
-```
-pip install -r requirements_dev.txt
 ```
 
 ### Train the model
