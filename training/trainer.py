@@ -32,9 +32,9 @@ from transformers import (
 logger = logging.getLogger(__name__)
 
 import os
-DEFAULT_TRAINING_DATASET_FILE = 'parquet-train.arrow'
+DEFAULT_TRAINING_DATASET_FILE = os.environ['DATASET_FILE_PATH']
 DEFAULT_TRAINING_DATASET = "tatsu-lab/alpaca"
-DEFAULT_INPUT_MODEL = "EleutherAI/gpt-j-6B"
+DEFAULT_INPUT_MODEL = os.environ['MODEL_PATH']
 RESPONSE_KEY = "### Response:\n"
 DEFAULT_SEED = 42
 MAX_LENGTH = 1024
