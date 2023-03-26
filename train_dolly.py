@@ -94,7 +94,11 @@ print(f"Local Output Dir: {local_output_dir}")
 print(f"DBFS Output Dir: {dbfs_output_dir}")
 print(f"Tensorboard Display Dir: {tensorboard_display_dir}")
 
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
+print(f'export TOKENIZERS_PARALLELISM=false')
+print(f'export num_gpus_flag={num_gpus_flag}')
+print(f'export deepspeed_config={deepspeed_config}')
+print(f'export local_output_dir={local_output_dir}')
+print(f'export dbfs_output_dir={dbfs_output_dir}')
 
 # COMMAND ----------
 
