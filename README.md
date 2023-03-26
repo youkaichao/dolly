@@ -38,12 +38,17 @@ export TRANSFORMERS_CACHE=`pwd`/model
 * Start a single-node cluster with node type having 8 A100 GPUs (e.g. `Standard_ND96asr_v4` or `p4d.24xlarge`).
 
 ```
+export DATASET_FILE_PATH=`pwd`/parquet-train.arrow
+export MODEL_PATH=`pwd`/model/
 python train_dolly.py # generates a train.sh
-./train.sh
+chmod +x train.sh
+/bin/bash train.sh
 ```
 
-## Running Unit Tests Locally
+## Generate some sentences
 
 ```
-./run_pytest.sh
+python generate.py
 ```
+
+(It is recommended to use `ipython` to interactively generate sentences to avoid loading models from disk again and again.)
