@@ -35,7 +35,7 @@ export TRANSFORMERS_CACHE=`pwd`/model
 
 ### Train the model
 
-* Start a single-node cluster with node type having 8 A100 GPUs (e.g. `Standard_ND96asr_v4` or `p4d.24xlarge`).
+* Start a single-node cluster with node type having 8 A100 (40GB memory) GPUs (e.g. `Standard_ND96asr_v4` or `p4d.24xlarge`).
 
 ```bash
 export timestamp=`date +%Y-%m-%d_%H-%M-%S`
