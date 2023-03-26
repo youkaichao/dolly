@@ -94,27 +94,30 @@ print(f"Local Output Dir: {local_output_dir}")
 print(f"DBFS Output Dir: {dbfs_output_dir}")
 print(f"Tensorboard Display Dir: {tensorboard_display_dir}")
 
-print(f'export TOKENIZERS_PARALLELISM=false')
-print(f'export num_gpus_flag={num_gpus_flag}')
-print(f'export deepspeed_config={deepspeed_config}')
-print(f'export local_output_dir={local_output_dir}')
-print(f'export dbfs_output_dir={dbfs_output_dir}')
+s = '''export DATASET_FILE_PATH=`pwd`/parquet-train.arrow
+export MODEL_PATH=`pwd`/model/
+deepspeed $num_gpus_flag \
+    --module training.trainer \
+    --deepspeed $deepspeed_config \
+    --epochs 1 \
+    --local-output-dir $local_output_dir \
+    --dbfs-output-dir $dbfs_output_dir \
+    --per-device-train-batch-size 8 \
+    --per-device-eval-batch-size 8 \
+    --lr 1e-5
+'''
+
+with open('train.sh', 'w') as f:
+    f.write(f'export TOKENIZERS_PARALLELISM=false\n')
+    f.write(f'export num_gpus_flag={num_gpus_flag}\n')
+    f.write(f'export deepspeed_config={deepspeed_config}\n')
+    f.write(f'export local_output_dir={local_output_dir}\n')
+    f.write(f'export dbfs_output_dir={dbfs_output_dir}\n')
+    f.write(s)
 
 # COMMAND ----------
 
 # MAGIC %load_ext tensorboard
 # MAGIC %tensorboard --logdir '{tensorboard_display_dir}'
-
-# COMMAND ----------
-
-# MAGIC !deepspeed {num_gpus_flag} \
-# MAGIC     --module training.trainer \
-# MAGIC     --deepspeed {deepspeed_config} \
-# MAGIC     --epochs 1 \
-# MAGIC     --local-output-dir {local_output_dir} \
-# MAGIC     --dbfs-output-dir {dbfs_output_dir} \
-# MAGIC     --per-device-train-batch-size 8 \
-# MAGIC     --per-device-eval-batch-size 8 \
-# MAGIC     --lr 1e-5
 
 # COMMAND ----------
