@@ -4,11 +4,11 @@ This fine-tunes the [GPT-J 6B](https://huggingface.co/EleutherAI/gpt-j-6B) model
 
 ## Get Started Training
 
-### Download dataset file
+### Download dataset file and model file
 
-Download from https://cloud.tsinghua.edu.cn/f/a7d28ef30cad4686a0b9/ into ./parquet-train.arrow
+Download from https://cloud.tsinghua.edu.cn/d/0185c787cdc243d1a3b7/ .
 
-### Download model checkpoint from huggingface
+Alternatively, you can download model checkpoint from huggingface
 
 ```
 pip install transformers
