@@ -50,8 +50,13 @@ deepspeed --num_gpus=8 \
 
 ## Generate some sentences
 
-```
-python generate.py
+```python
+model_path = '/path/to/checkpoint'
+from training.generate import load_model_tokenizer_for_generate, generate_response
+model, tokenizer = load_model_tokenizer_for_generate(model_path)
+instruction='Write a tweet to introduce Dolly, a model to mimic ChatGPT.'
+response = generate_response(instruction, model, tokenizer)
+print(response)
 ```
 
 (It is recommended to use `ipython` to interactively generate sentences to avoid loading models from disk again and again.)
