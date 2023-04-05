@@ -12,7 +12,25 @@ pip install -r requirements_dev.txt
 
 ### Download dataset file and model file
 
-Download from Tsinghua Cloud: https://cloud.tsinghua.edu.cn/d/0185c787cdc243d1a3b7/ .
+Download from Tsinghua Cloud:
+```
+wget https://github.com/youkaichao/dolly/archive/refs/heads/master.zip
+unzip master.zip
+cd dolly-master
+
+wget "https://cloud.tsinghua.edu.cn/f/498512c3c1724558830d/?dl=1" -O parquet-train.arrow
+mkdir -p ./model
+pushd ./model
+wget "https://cloud.tsinghua.edu.cn/f/8bfd19e6cb1a4a289c1b/?dl=1" -O added_tokens.json
+wget "https://cloud.tsinghua.edu.cn/f/231ddebf6caf49b38ce8/?dl=1" -O config.json
+wget "https://cloud.tsinghua.edu.cn/f/79e402dcc503430db9a1/?dl=1" -O merges.txt
+wget "https://cloud.tsinghua.edu.cn/f/001e6641d7324635bc77/?dl=1" -O special_tokens_map.json
+wget "https://cloud.tsinghua.edu.cn/f/2d68e62358da4b7f94e6/?dl=1" -O tokenizer.json
+wget "https://cloud.tsinghua.edu.cn/f/5ebcd4f2380147e3bee8/?dl=1" -O tokenizer_config.json
+wget "https://cloud.tsinghua.edu.cn/f/34aa75355590497ba28b/?dl=1" -O vocab.json
+wget "https://cloud.tsinghua.edu.cn/f/cd59c04366674ab592b0/?dl=1" -O pytorch_model.bin
+popd
+```
 
 Alternatively, you can download model checkpoint from huggingface
 
